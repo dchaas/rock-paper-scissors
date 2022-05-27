@@ -1,11 +1,24 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
 button {
     height: 200px;
     width: 200px;
     font-size: 18px;
+    background-color: antiquewhite;
+}
+
+#results {
+    font-size: 20px;
+    color: black;
 }

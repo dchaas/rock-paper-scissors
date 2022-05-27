@@ -2,6 +2,24 @@ console.log("Hello World");
 
 const OPTIONS = ['rock','paper','scissors'];
 
+const btnRock = document.querySelector('.rock');
+const btnPaper = document.querySelector('.paper');
+const btnScissors = document.querySelector('.scissors');
+const btns = document.querySelectorAll('button');
+const results = document.querySelector("#results");
+
+btns.forEach((btn)=> {
+    btn.addEventListener('click',
+    () => {
+        const playerSelection = btn.textContent.toLowerCase();
+        const computerSelection = computerPlayer();
+        console.log(playerSelection,computerSelection);
+        playRound(playerSelection,computerSelection);
+    }
+    )}
+    );
+
+
 function computerPlayer() {
     let random = Math.floor(Math.random()*3);
     return OPTIONS[random];
@@ -10,27 +28,23 @@ function computerPlayer() {
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection === 'rock' && computerSelection == 'paper') {
-        return `You Lose! ${playerSelection} loses to ${computerSelection}.`
+        results.textContent = `You Lose! ${playerSelection} loses to ${computerSelection}.`;
     } else if (playerSelection === 'rock' && computerSelection == 'scissors') {
-        return `You Win! ${playerSelection} beats ${computerSelection}.`
+        results.textContent = `You Win! ${playerSelection} beats ${computerSelection}.`;
     } else if (playerSelection === 'paper' && computerSelection == 'scissors') {
-        return `You Lose! ${playerSelection} loses to ${computerSelection}.`
+        results.textContent =  `You Lose! ${playerSelection} loses to ${computerSelection}.`;
     } else if (playerSelection === 'paper' && computerSelection == 'rock') {
-        return `You Win! ${playerSelection} beats ${computerSelection}.`
+        results.textContent = `You Win! ${playerSelection} beats ${computerSelection}.`;
     }  else if (playerSelection === 'scissors' && computerSelection == 'paper') {
-        return `You Win! ${playerSelection} beats ${computerSelection}.`
+        results.textContent = `You Win! ${playerSelection} beats ${computerSelection}.`;
     } else if (playerSelection === 'scissors' && computerSelection == 'rock') {
-        return `You Lose! ${playerSelection} loses to ${computerSelection}.`
+        results.textContent = `You Lose! ${playerSelection} loses to ${computerSelection}.`;
     } else {
-        return `Draw (${playerSelection} and ${computerSelection}), try again.`
+        results.textContent =  `Draw (${playerSelection} and ${computerSelection}), try again.`;
     }
 
 }
 
-
-function getUserChoice() {
-    return prompt('Select rock, paper or scissors:','').toLowerCase();
-}
 
 
 function game() {
